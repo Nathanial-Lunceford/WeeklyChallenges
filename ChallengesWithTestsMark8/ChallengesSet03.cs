@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -7,47 +8,161 @@ namespace ChallengesWithTestsMark8
     {
         public bool ArrayContainsAFalse(bool[] vals)
         {
-            throw new NotImplementedException();
+            if (vals == null)
+            {
+                return false;
+            }
+
+            if (vals.Length == 0)
+            {
+                return false;
+            }
+
+            for(int i = 0; i < vals.Length; i++)
+            {
+                if(vals[i] == false)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null)
+            {
+                return false;
+            }
+
+            var nums = numbers.ToList();
+
+            int sum = 0;
+
+            if (numbers.Count() == 0)
+            {
+                return false;
+            }
+
+            foreach(int num in nums)
+            {
+                if(num % 2 != 0)
+                {
+                    sum += num;
+                }
+            }
+
+            if(sum % 2 != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            throw new NotImplementedException();
+            if(password.Length == 0 || password == null)
+            {
+                return false;
+            }
+
+            bool containsUpper = false;
+            bool containsLower = false;
+            bool containsNumber = false;
+
+            foreach(char c in password)
+            {
+                if(Char.IsUpper(c))
+                {
+                    containsUpper = true;
+                }
+                else if (Char.IsLower(c))
+                {
+                    containsLower = true;
+                }
+                else if (Char.IsDigit(c))
+                {
+                    containsNumber = true;
+                }
+            }
+
+            if(containsUpper && containsLower && containsNumber)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public char GetFirstLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            if (val.Length == 0 || val == null)
+            {
+                return ' ';
+            }
+
+            return val[0];
         }
 
         public char GetLastLetterOfString(string val)
         {
-            throw new NotImplementedException();
+            if (val.Length == 0 || val == null)
+            {
+                return ' ';
+            }
+
+            return val[val.Length - 1];
         }
 
         public decimal Divide(decimal dividend, decimal divisor)
         {
-            throw new NotImplementedException();
+            if(divisor == 0)
+            {
+                return 0;
+            }
+
+            return dividend / divisor;
         }
 
         public int LastMinusFirst(int[] nums)
         {
-            throw new NotImplementedException();
+            if(nums.Length == 0 || nums == null)
+            {
+                return 0;
+            }
+
+            return nums[nums.Length - 1] - nums[0];
         }
 
         public int[] GetOddsBelow100()
         {
-            throw new NotImplementedException();
+            int[] ints = new int[50];
+            int counter = 0;
+
+            for(int i = 0; i < 100; i++)
+            {
+                if(i % 2 != 0)
+                {
+                    ints[counter] = i;
+                    counter++;
+                }
+            }
+
+            return ints;
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < words.Length; i++)
+            {
+                words[i] = words[i].ToUpper();
+            }
         }
     }
 }
